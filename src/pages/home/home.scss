@@ -1,0 +1,73 @@
+.employeeTable {
+    padding: 1rem;
+    margin: 0 auto;
+    max-width: 1200px;
+    overflow-x: auto;
+  }
+  
+  .table-options {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .table-options label {
+    font-weight: bold;
+  }
+  
+  .table-options select {
+    margin-left: 0.5rem;
+    padding: 0.25rem;
+    font-size: 1rem;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: left;
+  }
+  
+  thead {
+    background-color: #f4f4f4;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .pagination-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  
+    &:hover {
+      background-color: #0056b3;
+    }
+  
+    &:disabled {
+      background-color: #c0c0c0;
+      cursor: not-allowed;
+    }
+  }
+  
+  .pagination-info {
+    font-size: 1rem;
+  }
+  
