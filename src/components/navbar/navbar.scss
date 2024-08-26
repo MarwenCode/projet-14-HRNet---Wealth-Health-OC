@@ -1,71 +1,74 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #344e41; 
-    padding: 1rem;
-    color: white;
-    border-bottom: 2px solid #a3b18a; 
-  }
-  
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .main-nav-logo-image {
-    height: 40px;
-    width: auto;
-  }
-  
-  .logo p {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  .nav-list {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .nav-item {
-    cursor: pointer;
-    transition: color 0.3s, background-color 0.3s;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    
-    &:hover {
-      background-color: #818f69; 
-      color: #bfcfc7; 
-    }
-  }
-  
-  .add-employee-button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: white;
-    font-size: 1.25rem;
-    
-    &:hover {
-      color: #a3b18a; 
-    }
-  }
-  
-  .add-employee-button i {
-    margin-right: 0.5rem; 
-  }
-  
-  .nav-item:last-child {
-    font-weight: bold;
-  }
-  
-  .nav-item:hover {
-    background-color: rgba(255, 255, 255, 0.1); 
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #344e41;
+  padding: 1rem;
+  color: white;
+  border-bottom: 2px solid #a3b18a;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo  {
+  text-decoration: none; 
+  color: inherit; 
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.main-nav-logo-image {
+  height: 40px;
+  width: auto;
+}
+
+.logo p {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0;
+  color: white;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  cursor: pointer;
+  transition: color 0.3s, background-color 0.3s;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.add-employee-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.add-employee-button i {
+  margin-right: 0.5rem;
+}
+
+.add-employee-button:hover {
+  color: #a3b18a;
+}
+
+.nav-item:last-child {
+  font-weight: bold;
+}

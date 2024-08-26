@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { employees as initialEmployees } from './utils/data'; // Données par défaut
+import { employees as initialEmployees } from './utils/data'; 
 import { useSelector } from 'react-redux';
 import Navbar from './components/navbar/Navbar';
-import Home from './pages/home/Home';
+import Table from './pages/table/Table';
 import SignIn from './components/signin/SignIn';
-import AddEmployee from "./pages/addEmployee/AddEmployee";
+import AddEmployee from './pages/addEmployee/AddEmployee';
 
 import './App.css';
 
@@ -15,19 +15,13 @@ function App() {
   const [employeeList, setEmployeeList] = useState([]);
 
   useEffect(() => {
-    // Charger les employés depuis localStorage
-    const storedEmployees = JSON.parse(localStorage.getItem('employees'));
-
-    if (storedEmployees && storedEmployees.length > 0) {
+    const storedEmployees = JSON.parse(localStorage.getItem('employees')) || [];
+    if (storedEmployees.length > 0) {
       setEmployeeList(storedEmployees);
     } else {
-      // Si `localStorage` est vide, stocker les employés initiaux
       localStorage.setItem('employees', JSON.stringify(initialEmployees));
       setEmployeeList(initialEmployees);
     }
-
-    // Debug : afficher les employés chargés dans la console
-    console.log('Loaded employees:', storedEmployees || initialEmployees);
   }, []);
 
   return (
@@ -35,15 +29,25 @@ function App() {
       <div className="container">
         <Navbar />
         <Routes>
-         
           <Route
             path="/addEmployee"
-            element={isAuthenticated ? <AddEmployee /> : <SignIn />}
+            element={isAuthenticated ? (
+              <AddEmployee 
+                employeeList={employeeList} 
+                setEmployeeList={setEmployeeList} 
+              />
+            ) : (
+              <SignIn />
+            )}
           />
           <Route path="/signin" element={<SignIn />} />
           <Route
             path="/"
-            element={isAuthenticated ? <Home employeeList={employeeList} /> : <SignIn />}
+            element={isAuthenticated ? (
+              <Table employeeList={employeeList} />
+            ) : (
+              <SignIn />
+            )}
           />
         </Routes>
       </div>

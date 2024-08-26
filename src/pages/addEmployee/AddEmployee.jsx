@@ -5,7 +5,7 @@ import StateSelect from '../../components/stateSelect/StateSelect.jsx';
 import { states } from '../../utils/data.js';
 import './addemployee.scss'; 
 
-const AddEmployee = () => {
+const AddEmployee = ({ employeeList, setEmployeeList }) => {
   const [formState, setFormState] = useState({
     firstName: '',
     lastName: '',
@@ -45,16 +45,21 @@ const AddEmployee = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const storedEmployees = JSON.parse(localStorage.getItem('employees')) || [];
     const newEmployee = { 
       ...formState, 
       startDate: formState.startDate.toISOString().split('T')[0],
       dob: formState.dob.toISOString().split('T')[0],
     };
 
-    const updatedEmployees = [...storedEmployees, newEmployee];
-    localStorage.setItem('employees', JSON.stringify(updatedEmployees));
+    const updatedEmployees = [...employeeList, newEmployee];
 
+    // Mise à jour du localStorage
+    localStorage.setItem('employees', JSON.stringify(updatedEmployees));
+    
+    // Mise à jour de la liste des employés dans App.jsx
+    setEmployeeList(updatedEmployees);
+
+    // Réinitialiser le formulaire
     setFormState({
       firstName: '',
       lastName: '',
@@ -67,6 +72,7 @@ const AddEmployee = () => {
       zip: '',
     });
 
+    // Afficher la modal
     setIsModalOpen(true);
   };
 
@@ -129,6 +135,7 @@ const AddEmployee = () => {
             />
           </div>
         </div>
+
         <div className="input-container">
           <label htmlFor="department">Department</label>
           <select 

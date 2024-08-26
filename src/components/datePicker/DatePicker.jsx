@@ -1,5 +1,4 @@
 import React from 'react';
-// src/components/DatePicker/DatePicker.jsx
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -11,8 +10,12 @@ const DatePicker = ({ selectedDate, handleDateChange, name, id }) => {
       className="form-input"
       dateFormat="yyyy-MM-dd"
       id={id}
+      showYearDropdown
+      scrollableYearDropdown
+      yearDropdownItemNumber={50} 
     />
   );
 };
 
 export default DatePicker;
+

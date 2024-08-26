@@ -22,7 +22,7 @@ const SignIn = () => {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
-    // Déclenche l'action de connexion avec les informations fournies
+
     dispatch(login({ email, password }));
   };
 
