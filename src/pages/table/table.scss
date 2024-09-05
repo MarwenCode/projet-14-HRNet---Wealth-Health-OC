@@ -4,7 +4,16 @@
   max-width: 1200px;
   overflow-x: auto;
   font-family: Arial, sans-serif;
-}
+
+
+  .table-options {
+    display: flex;
+  }
+
+  .search {
+    margin-left: 66%;
+  }
+
 
 .employeeTable th {
   position: relative;
@@ -93,14 +102,14 @@ tbody tr:hover {
 .pagination button {
   padding: 0.5rem 1rem;
   border: none;
-  background-color: #007bff;
+  background-color: #344e41;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .pagination button:hover {
-  background-color: #0056b3;
+  background-color: #516b5e;
 }
 
 .pagination button:disabled {
@@ -110,4 +119,8 @@ tbody tr:hover {
 
 .pagination-info {
   font-size: 1rem;
+}
+
+
+
 }

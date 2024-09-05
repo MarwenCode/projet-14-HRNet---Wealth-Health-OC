@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import DatePicker from '../../components/datePicker/DatePicker.jsx';
 import Modal from '../../components/modal/Modal.jsx';
-import StateSelect from '../../components/stateSelect/StateSelect.jsx';
-import { states } from '../../utils/data.js';
+import SelectInput from '../../components/stateSelect/SelectInput.jsx';
+import { states, departments } from '../../utils/data.js';
 import './addemployee.scss'; 
 
 const AddEmployee = ({ employeeList, setEmployeeList }) => {
@@ -35,10 +35,10 @@ const AddEmployee = ({ employeeList, setEmployeeList }) => {
     }));
   };
 
-  const handleSelectChange = (selectedOption) => {
+  const handleSelectChange = (selectedOption, name) => {
     setFormState((prevState) => ({
       ...prevState,
-      state: selectedOption.value,
+      [name]: selectedOption ? selectedOption.value : '',
     }));
   };
 
@@ -56,10 +56,8 @@ const AddEmployee = ({ employeeList, setEmployeeList }) => {
     // Mise à jour du localStorage
     localStorage.setItem('employees', JSON.stringify(updatedEmployees));
     
-    // Mise à jour de la liste des employés dans App.jsx
     setEmployeeList(updatedEmployees);
 
-    // Réinitialiser le formulaire
     setFormState({
       firstName: '',
       lastName: '',
@@ -72,7 +70,6 @@ const AddEmployee = ({ employeeList, setEmployeeList }) => {
       zip: '',
     });
 
-    // Afficher la modal
     setIsModalOpen(true);
   };
 
@@ -83,6 +80,11 @@ const AddEmployee = ({ employeeList, setEmployeeList }) => {
   const stateOptions = states.map((state) => ({
     value: state.abbreviation,
     label: state.name,
+  }));
+
+  const departmentOptions = departments.map((depart) => ({
+    value: depart.name,
+    label: depart.name,
   }));
 
   return (
@@ -138,19 +140,12 @@ const AddEmployee = ({ employeeList, setEmployeeList }) => {
 
         <div className="input-container">
           <label htmlFor="department">Department</label>
-          <select 
-            name="department" 
-            id="department" 
-            className="form-input" 
-            value={formState.department} 
-            onChange={handleChange}
-          >
-            <option value="Sales">Sales</option>
-            <option value="Marketing">Marketing</option>
-            <option value="Engineering">Engineering</option>
-            <option value="Human Resources">Human Resources</option>
-            <option value="Legal">Legal</option>
-          </select>
+          <SelectInput 
+            options={departmentOptions} 
+            selectedOption={formState.department} 
+            handleSelectChange={(selectedOption) => handleSelectChange(selectedOption, 'department')} 
+            placeholder="Select a department"
+          />
         </div>
         <fieldset className="address-inputs">
           <legend>Address</legend>
@@ -159,7 +154,7 @@ const AddEmployee = ({ employeeList, setEmployeeList }) => {
             <input 
               type="text" 
               id="street" 
-              className="form-input" 
+              className="form-input-adress" 
               placeholder="ex: 77 Massachusetts Avenue" 
               name="street" 
               value={formState.street} 
@@ -171,7 +166,7 @@ const AddEmployee = ({ employeeList, setEmployeeList }) => {
             <input 
               type="text" 
               id="city" 
-              className="form-input" 
+              className="form-input-adress" 
               placeholder="ex: New York" 
               name="city" 
               value={formState.city} 
@@ -180,10 +175,11 @@ const AddEmployee = ({ employeeList, setEmployeeList }) => {
           </div>
           <div className="input-container">
             <label htmlFor="state">State</label>
-            <StateSelect 
-              stateOptions={stateOptions} 
-              selectedState={formState.state} 
-              handleSelectChange={handleSelectChange} 
+            <SelectInput 
+              options={stateOptions} 
+              selectedOption={formState.state} 
+              handleSelectChange={(selectedOption) => handleSelectChange(selectedOption, 'state')} 
+              placeholder="Select a state"
             />
           </div>
           <div className="input-container">
@@ -193,7 +189,7 @@ const AddEmployee = ({ employeeList, setEmployeeList }) => {
               id="zipCode" 
               min="501" 
               max="99950" 
-              className="form-input" 
+              className="form-input-adress" 
               placeholder="501 to 99950" 
               name="zip" 
               value={formState.zip} 
@@ -210,8 +206,9 @@ const AddEmployee = ({ employeeList, setEmployeeList }) => {
         isOpen={isModalOpen} 
         onRequestClose={closeModal} 
         contentLabel="Employee Added"
+        className="modal"
       >
-        <button onClick={closeModal} className="btn">X</button>
+        <button onClick={closeModal} className="closeBtn">X</button>
         <h2>Employee Created!</h2>
       </Modal>
     </div>

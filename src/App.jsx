@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { employees as initialEmployees } from './utils/data'; 
 import { useSelector } from 'react-redux';
 import Navbar from './components/navbar/Navbar';
-import Table from './pages/table/Table';
+// import Table from './pages/table/Table';
+// import Table from './pages/table/Table2';
+import { Table } from 'employee-table-react';  
 import SignIn from './components/signin/SignIn';
 import AddEmployee from './pages/addEmployee/AddEmployee';
 
