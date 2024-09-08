@@ -10,9 +10,9 @@
   width: 100%;
   max-width: 400px;
   padding: 20px;
-  background-color: #ffffff; // Couleur de fond pour la section de connexion
-  border-radius: 8px; // Coins arrondis pour un look moderne
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // Ombre douce pour un léger effet de profondeur
+  background-color: #ffffff; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .signInContent {
@@ -20,7 +20,7 @@
 }
 
 .signInContent h1 {
-  color: #333; // Couleur du texte, peut être une couleur sombre ou une couleur primaire que vous utilisez
+  color: #333; 
   margin-bottom: 24px;
   font-size: 24px;
 }
@@ -32,7 +32,7 @@
 
 .inputWrapper label {
   display: block;
-  color: #666; // Couleur du texte des labels
+  color: #666; 
   margin-bottom: 8px;
   font-size: 14px;
 }
@@ -41,7 +41,7 @@
   width: 100%;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc; // Bordure standard pour les champs de texte
+  border: 1px solid #ccc; 
   border-radius: 4px;
   box-sizing: border-box;
   transition: border-color 0.3s ease;
@@ -56,7 +56,7 @@
   width: 100%;
   padding: 12px;
   font-size: 16px;
-  color: #fff; // Texte blanc pour un bon contraste
+  color: #fff; 
   background-color: #344e41;
   border: none;
   border-radius: 4px;
